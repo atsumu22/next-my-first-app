@@ -6,11 +6,11 @@ import Link from "next/link";
 import styles from '@/styles/Home.module.css'
 import Layout from '@/components/Layout';
 import utilStyles from "../styles/utils.module.css";
-import { getPostsData } from '@/lib/post';
+import { getPostsMetaData } from '@/lib/post';
 
 // SSGの場合
 export async function getStaticProps() {
-  const allPostsData = getPostsData();
+  const allPostsData = getPostsMetaData();
   console.log(allPostsData);
 
   return {
@@ -19,6 +19,17 @@ export async function getStaticProps() {
     },
   };
 }
+
+// // SSRの場合
+// export async function gesServerSideProps(context) {
+
+//   return {
+//     props: {
+//       // コンポーネントに渡すためのprops
+//     }
+//   };
+// }
+
 
 export default function Home({ allPostsData }) {
   return (
