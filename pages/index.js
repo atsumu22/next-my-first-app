@@ -4,7 +4,7 @@ import { Inter } from 'next/font/google'
 import Link from "next/link";
 
 import styles from '@/styles/Home.module.css'
-import Layout from '@/components/Layout';
+import Layout, { siteTitle } from '@/components/Layout';
 import utilStyles from "../styles/utils.module.css";
 import { getPostsMetaData } from '@/lib/post';
 
@@ -33,7 +33,10 @@ export async function getStaticProps() {
 
 export default function Home({ allPostsData }) {
   return (
-   <Layout>
+   <Layout home={true}>
+    <Head>
+      <title>{siteTitle}</title>
+    </Head>
     <section className={utilStyles.headingMd}>
       <p>
         私はジュニアフルスタックエンジニアです。Ruby on Railsを用いたアプリケーション開発。Reactを用いたフロントエンド開発をメインとしています。現在Next.jsを学んでいます。AWSやDockerなどインフラ側を苦手としています。
